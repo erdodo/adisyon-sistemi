@@ -11,8 +11,7 @@ RUN npm install
 
 COPY . .
 
-# Build sırasında DATABASE_URL ihtiyacı var (Static prerendering için)
-ENV DATABASE_URL="postgresql://dummy:dummy@localhost:5432/dummy"
+# Build sırasında telemetry kapatma
 ENV NEXT_TELEMETRY_DISABLED=1
 
 # Generate Prisma Client
