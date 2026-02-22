@@ -3,7 +3,7 @@ FROM node:18-alpine AS builder
 
 WORKDIR /app
 
-COPY package*.json ./
+RUN apk add --no-cache openssl libc6-compat
 COPY prisma ./prisma/
 
 RUN npm install
