@@ -25,6 +25,9 @@ FROM node:18-alpine AS runner
 
 WORKDIR /app
 
+# Runtime için OpenSSL ve libc6-compat ekle (Prisma arm64/alpine uyumluluğu için)
+RUN apk add --no-cache openssl libc6-compat
+
 ENV NODE_ENV=production
 
 COPY --from=builder /app/next.config.ts ./
