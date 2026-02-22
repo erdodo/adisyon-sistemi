@@ -4,6 +4,7 @@ FROM node:18-alpine AS builder
 WORKDIR /app
 
 RUN apk add --no-cache openssl libc6-compat
+COPY package*.json ./
 COPY prisma ./prisma/
 
 RUN npm install
