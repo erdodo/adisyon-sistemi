@@ -15,7 +15,7 @@ services:
     build: .
     restart: always
     ports:
-      - "3000:3000"
+      - "3032:3000"
     environment:
       - DATABASE_URL=postgresql://adisyon_user:adisyon_password@db:5432/adisyon_db
       - JWT_SECRET=your_jwt_secret_here
