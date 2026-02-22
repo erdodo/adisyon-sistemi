@@ -2,6 +2,14 @@ import { prisma } from "./db";
 
 type WebhookEvent = "ORDER_CREATED" | "ORDER_STATUS_CHANGED" | "ORDER_PAID";
 
+interface WebhookItem {
+  id: number;
+  productId: number;
+  productName: string;
+  quantity: number;
+  price: number;
+}
+
 interface WebhookPayload {
   event: WebhookEvent;
   orderId: number;
@@ -10,7 +18,7 @@ interface WebhookPayload {
   status: string;
   totalAmount: number;
   customerName?: string | null;
-  items?: any[];
+  items?: WebhookItem[];
   timestamp: string;
 }
 

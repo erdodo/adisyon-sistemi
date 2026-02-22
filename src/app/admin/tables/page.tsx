@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { generateQRUrl } from "@/lib/utils";
 
 interface TableGroup {
@@ -35,7 +35,7 @@ export default function TablesPage() {
     groupId: "",
   });
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const res = await fetch("/api/tables");
       const data = await res.json();
@@ -46,11 +46,11 @@ export default function TablesPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -80,11 +80,16 @@ export default function TablesPage() {
     }
   };
 
-  const handleEdit = (item: any, isGroup: boolean) => {
+  const handleEdit = (item: Table | TableGroup, isGroup: boolean) => {
+    const tableItem = item as Table;
+    const groupItem = item as TableGroup;
+
     setFormData({
       name: item.name,
-      capacity: isGroup ? item.sortOrder.toString() : item.capacity.toString(),
-      groupId: isGroup ? "" : item.groupId?.toString() || "",
+      capacity: isGroup
+        ? groupItem.sortOrder.toString()
+        : tableItem.capacity.toString(),
+      groupId: isGroup ? "" : tableItem.groupId?.toString() || "",
     });
     setEditingId(item.id);
     setActiveTab(isGroup ? 1 : 0);
@@ -108,7 +113,13 @@ export default function TablesPage() {
     }
   };
 
-  const handleToggleActive = async (item: any, isGroup: boolean) => {
+  const handleToggleActive = async (
+    item: Table | TableGroup,
+    isGroup: boolean,
+  ) => {
+    const tableItem = item as Table;
+    const groupItem = item as TableGroup;
+
     await fetch("/api/tables", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -116,25 +127,25 @@ export default function TablesPage() {
         ...item,
         isActive: !item.isActive,
         type: isGroup ? "group" : "table",
-        capacity: isGroup ? item.sortOrder : item.capacity,
+        capacity: isGroup ? groupItem.sortOrder : tableItem.capacity,
       }),
     });
     fetchData();
   };
 
-  const resetForm = () => {
+  const resetForm = useCallback(() => {
     setFormData({
       name: "",
       capacity: activeTab === 0 ? "4" : "0",
       groupId: groups.length > 0 ? groups[0].id.toString() : "",
     });
     setEditingId(null);
-  };
+  }, [activeTab, groups]);
 
   // Sekme değiştiğinde formu sıfırla
   useEffect(() => {
     if (!editingId) resetForm();
-  }, [activeTab]);
+  }, [activeTab, editingId, resetForm]);
 
   return (
     <div className="space-y-6">

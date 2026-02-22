@@ -49,7 +49,7 @@ export default function CashierDashboard() {
       } else {
         router.push("/login");
       }
-    } catch (_error) {
+    } catch {
       console.error("Açık hesaplar alınamadı");
     } finally {
       setLoading(false);
@@ -78,7 +78,7 @@ export default function CashierDashboard() {
       } else {
         alert("Tahsilat işlemi başarısız oldu.");
       }
-    } catch (error) {
+    } catch {
       alert("Tahsilat alınamadı.");
     } finally {
       setProcessingId(null);

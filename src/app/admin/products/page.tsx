@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Image from "next/image";
+import { useState, useEffect, useCallback } from "react";
 import { formatPrice } from "@/lib/utils";
 
 interface Category {
@@ -38,26 +37,26 @@ export default function ProductsPage() {
     preparationTime: "",
   });
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const [prodRes, catRes] = await Promise.all([
         fetch("/api/products"),
         fetch("/api/categories"),
       ]);
       const prodData = await prodRes.json();
-      const catData = await catRes.json();
+      const catData: Category[] = await catRes.json();
       setProducts(prodData);
-      setCategories(catData.filter((c: any) => c.isActive));
+      setCategories(catData.filter((c) => c.isActive));
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -150,7 +149,7 @@ export default function ProductsPage() {
         categoryId: categories[0].id.toString(),
       }));
     }
-  }, [categories]);
+  }, [categories, formData.categoryId]);
 
   return (
     <div className="space-y-6">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { formatPrice } from "@/lib/utils";
 
 interface Product {
@@ -90,7 +90,7 @@ export default function OrdersPage() {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("all");
 
-  const fetchOrders = async () => {
+  const fetchOrders = useCallback(async () => {
     try {
       const url =
         filter === "all" ? "/api/orders" : `/api/orders?status=${filter}`;
@@ -102,11 +102,11 @@ export default function OrdersPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [filter]);
 
   useEffect(() => {
     fetchOrders();
-  }, [filter]);
+  }, [fetchOrders]);
 
   return (
     <div className="space-y-6">

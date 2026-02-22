@@ -12,13 +12,22 @@ export async function POST(req: Request) {
 
     const authUser = await getAuthUser();
 
-    const orderReqData: any = {
+    interface OrderItemInput {
+      productId: number;
+      quantity: number;
+      price: number;
+      note?: string;
+    }
+
+    const orderReqData = {
       status: "pending",
       totalAmount,
       note,
       customerName,
+      tableId: tableId ? Number(tableId) : undefined,
+      staffId: (authUser?.role === "waiter" || authUser?.role === "admin") ? authUser.id : undefined,
       items: {
-        create: items.map((item: any) => ({
+        create: items.map((item: OrderItemInput) => ({
           productId: item.productId,
           quantity: item.quantity,
           price: item.price,
@@ -28,16 +37,7 @@ export async function POST(req: Request) {
       }
     };
 
-    if (authUser && (authUser.role === "waiter" || authUser.role === "admin")) {
-        orderReqData.staffId = authUser.id;
-    }
-
-    if (tableId) {
-       orderReqData.tableId = Number(tableId);
-    } else {
-        // Eğer masa yoksa ve müşteri adı varsa, "Gel Al" gibi düşünebiliriz ama
-        // sistem masa zorunlu kılıyorsa buraya varsayılan "Paket Servis" masası ID'si verilmeli
-        // Şimdilik demo için masası olmayan siparişe izin vermemek en iyisi:
+    if (!tableId) {
         return NextResponse.json({ error: "Lütfen sipariş için bir masa seçin." }, { status: 400 });
     }
 

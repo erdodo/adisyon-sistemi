@@ -7,7 +7,7 @@ export async function GET() {
       orderBy: { sortOrder: "asc" },
     });
     return NextResponse.json(categories);
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Kategoriler getirilemedi" }, { status: 500 });
   }
 }
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
       data: { name, icon, sortOrder: Number(sortOrder) || 0 },
     });
     return NextResponse.json(category);
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Kategori eklenemedi" }, { status: 500 });
   }
 }
@@ -32,7 +32,7 @@ export async function PUT(req: Request) {
       data: { name, icon, sortOrder: Number(sortOrder), isActive },
     });
     return NextResponse.json(category);
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Kategori güncellenemedi" }, { status: 500 });
   }
 }
@@ -50,7 +50,7 @@ export async function DELETE(req: Request) {
 
     await prisma.category.delete({ where: { id: Number(id) } });
     return NextResponse.json({ success: true });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Kategori silinemedi" }, { status: 500 });
   }
 }

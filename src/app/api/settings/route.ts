@@ -10,7 +10,8 @@ export async function GET() {
     // Şifreyi cliente gönderme
     const { adminPassword: _adminPassword, ...safeSettings } = settings;
     return NextResponse.json(safeSettings);
-  } catch (_error) {
+  } catch (error) {
+    console.error("GET Settings Error:", error);
     return NextResponse.json({ error: "Ayarlar getirilemedi" }, { status: 500 });
   }
 }
@@ -45,12 +46,13 @@ export async function PUT(req: Request) {
 
     const updatedSettings = await prisma.settings.update({
       where: { id: settings.id },
-      data: updateData as any, // Prisma model type check için temporarily any
+      data: updateData as any, // eslint-disable-line @typescript-eslint/no-explicit-any
     });
 
-    const { adminPassword: _adminPassword, ...safeSettings } = updatedSettings;
+    const { adminPassword: _, ...safeSettings } = updatedSettings;
     return NextResponse.json(safeSettings);
-  } catch (_error) {
+  } catch (error) {
+    console.error("PUT Settings Error:", error);
     return NextResponse.json({ error: "Ayarlar güncellenemedi" }, { status: 500 });
   }
 }

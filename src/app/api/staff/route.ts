@@ -16,7 +16,8 @@ export async function GET() {
       orderBy: { createdAt: "desc" }
     });
     return NextResponse.json(staffList);
-  } catch (_error) {
+  } catch (error) {
+    console.error("GET Staff Error:", error);
     return NextResponse.json({ error: "Personel getirilemedi" }, { status: 500 });
   }
 }
@@ -39,7 +40,8 @@ export async function POST(req: Request) {
     });
     
     return NextResponse.json(newStaff);
-  } catch (_error) {
+  } catch (error) {
+    console.error("POST Staff Error:", error);
     return NextResponse.json({ error: "Personel eklenemedi" }, { status: 500 });
   }
 }
@@ -61,12 +63,13 @@ export async function PUT(req: Request) {
 
     const updatedStaff = await prisma.staff.update({
       where: { id: Number(id) },
-      data: updateData as any, // Temporary Type Bypass 
+      data: updateData as any, // eslint-disable-line @typescript-eslint/no-explicit-any
       select: { id: true, name: true, phone: true, role: true, isActive: true }
     });
     
     return NextResponse.json(updatedStaff);
-  } catch (_error) {
+  } catch (error) {
+    console.error("PUT Staff Error:", error);
     return NextResponse.json({ error: "Personel güncellenemedi" }, { status: 500 });
   }
 }
@@ -92,7 +95,8 @@ export async function DELETE(req: Request) {
   
       await prisma.staff.delete({ where: { id: Number(id) } });
       return NextResponse.json({ success: true });
-    } catch (_error) {
+    } catch (error) {
+      console.error("DELETE Staff Error:", error);
       return NextResponse.json({ error: "Personel silinemedi" }, { status: 500 });
     }
   }

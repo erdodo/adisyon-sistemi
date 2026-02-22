@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { StaffRole } from "@/types";
 
 interface Staff {
@@ -31,7 +31,7 @@ export default function StaffPage() {
     role: "waiter" as StaffRole,
   });
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const res = await fetch("/api/staff");
       const data = await res.json();
@@ -41,11 +41,11 @@ export default function StaffPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -59,7 +59,7 @@ export default function StaffPage() {
     };
 
     if (editingId && !formData.password) {
-      delete (payload as any).password;
+      delete (payload as Partial<typeof formData>).password;
     }
 
     const res = await fetch(url, {

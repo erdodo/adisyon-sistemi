@@ -39,7 +39,7 @@ export default function KitchenDashboard() {
       } else {
         router.push("/login");
       }
-    } catch (_error) {
+    } catch {
       console.error("Siparişler alınamadı");
     } finally {
       setLoading(false);
@@ -63,7 +63,7 @@ export default function KitchenDashboard() {
       if (res.ok) {
         fetchOrders();
       }
-    } catch (error) {
+    } catch {
       alert("Durum güncellenemedi.");
     }
   };
