@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: adisyon_user
+      POSTGRES_PASSWORD: adisyon_password
+      POSTGRES_DB: adisyon_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgresql://adisyon_user:adisyon_password@db:5432/adisyon_db
+      - JWT_SECRET=your_jwt_secret_here
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
