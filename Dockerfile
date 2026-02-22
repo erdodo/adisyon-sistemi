@@ -11,6 +11,10 @@ RUN npm install
 
 COPY . .
 
+# Build sırasında DATABASE_URL ihtiyacı var (Static prerendering için)
+ENV DATABASE_URL="postgresql://dummy:dummy@localhost:5432/dummy"
+ENV NEXT_TELEMETRY_DISABLED=1
+
 # Generate Prisma Client
 RUN npx prisma generate
 
@@ -24,7 +28,7 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
-COPY --from=builder /app/next.config.mjs ./
+COPY --from=builder /app/next.config.ts ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules

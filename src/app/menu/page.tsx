@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { formatPrice } from "@/lib/utils";
@@ -22,7 +22,7 @@ interface Category {
   products: Product[];
 }
 
-export default function MenuPage() {
+function MenuContent() {
   const searchParams = useSearchParams();
   const tableIdParams = searchParams?.get("masa");
 
@@ -456,5 +456,19 @@ export default function MenuPage() {
         }}
       />
     </div>
+  );
+}
+
+export default function MenuPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center">
+          Menü Yükleniyor...
+        </div>
+      }
+    >
+      <MenuContent />
+    </Suspense>
   );
 }
