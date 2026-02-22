@@ -1,85 +1,103 @@
-# 🍽 Adisyon Menü - Modern Restoran Yönetim Sistemi
+# 🍽️ Adisyon Menü: İşletmenizin Dijital Kalbi
 
-Adisyon Menü, restoranlar, cafeler ve büfeler için tasarlanmış; müşteri siparişinden mutfağa, kasadan yönetici paneline kadar tüm süreçleri uçtan uca yöneten, bulut tabanlı bir dijital dönüşüm çözümüdür.
-
----
-
-## 🔥 Temel Özellikler
-
-### 📱 Dijital QR Menü & Müşteri Siparişi
-
-Müşterileriniz masadaki QR kodu okutarak anında güncel menüye erişir ve siparişlerini saniyeler içinde iletebilirler.
-
-- **Temassız ve Hızlı:** Sıra beklemeden, garson çağırmadan sipariş.
-- **Görsel Zenginlik:** Ürün fotoğrafları ve detaylı açıklamalar.
-- **Masa Tanıma:** Siparişin hangi masadan geldiği otomatik tespit edilir.
-
-![Müşteri Menüsü](file:///Users/erdoganyesil/Documents/adisyon-menu/resimler/menu.png)
+**Adisyon Menü**, restoran ve cafeler için hızı, estetiği ve kontrolü bir araya getiren yeni nesil bir işletme yönetim sistemidir. Karmaşık operasyonları basitleştirir, personel verimliliğini artırır ve müşterilerinize kusursuz bir deneyim sunar.
 
 ---
 
-### 🤵 Garson Arayüzü & Masa Yönetimi
+## 🌟 Müşteri Deneyimi: Masadan Anında Sipariş
 
-Personeliniz için optimize edilmiş, mobil uyumlu yönetim ekranı.
+Müşterileriniz artık garson beklemiyor! Masalardaki şık QR kodları okutarak, işletmenizin özel renkleriyle tasarlanmış interaktif menüye saniyeler içinde ulaşırlar.
 
-- **Gerçek Zamanlı Durum:** Masaların doluluk oranını ve sipariş durumlarını anlık görün.
-- **Hazır Sipariş Bildirimi:** Mutfaktan çıkan siparişler garson ekranında zıplayan ikonlar ve yeşil uyarılarla anında belirir.
-- **Hızlı Sipariş Girişi:** Garsonlar masa başında hızlıca ürün ekleyebilir.
+> [!TIP]
+> **Yüksek Çözünürlüklü Görseller:** Ürünlerinizi en iştah açıcı haliyle sergileyerek satışlarınızı %30'a kadar artırın.
 
-![Garson Masalar](file:///Users/erdoganyesil/Documents/adisyon-menu/resimler/garson masa.png)
-
----
-
-### 👨‍🍳 Mutfak Takip Ekranı
-
-Aşçıların iş yükünü hafifleten, bekleyen ve hazırlanan siparişleri kronolojik sırayla gösteren dijital panel.
-
-- **Tek Dokunuşla Durum Değişimi:** "Hazırlanıyor"dan "Hazır"a kolay geçiş.
-- **Gecikme Takibi:** En eski siparişlerin önceliklendirilmesi.
-
-![Mutfak Ekranı](file:///Users/erdoganyesil/Documents/adisyon-menu/resimler/mutfak siparişler.png)
+![Dijital QR Menü](file:///Users/erdoganyesil/Documents/adisyon-menu/resimler/menu.png)
 
 ---
 
-### 💰 Kasa & Tahsilat Sistemi
+## 🤵 Personel Verimliliği: Hız ve Doğruluk
 
-Açık hesapların takibi ve ödeme işlemlerinin hatasız yönetimi.
+Garsonlarınız ve mutfak ekibiniz arasındaki iletişim kopukluklarına son verin. Akıllı bildirim sistemimiz sayesinde her sipariş tam zamanında, doğru masada!
 
-- **Masa bazlı ödeme:** Parçalı veya tam ödeme imkanı.
-- **Geçmiş Satış Takibi:** Günlük cironun anlık izlenmesi.
-
-![Kasa Ekranı](file:///Users/erdoganyesil/Documents/adisyon-menu/resimler/kasa hesaplar.png)
-
----
-
-### 📊 Güçlü Yönetici Paneli (Admin)
-
-İşletmenizi rakamlarla yönetin.
-
-- **Analitik Dashboard:** Saatlik sipariş yoğunluğu grafikleri, günün en çok satan top 3 ürünü ve genel satış istatistikleri.
-- **Stok & Menü Yönetimi:** Saniyeler içinde fiyat güncelleyin, yeni ürün veya kategori ekleyin.
-- **Personel Yetkilendirme:** Garson, Kasiyer ve Mutfak personeli oluşturma ve şifreleme.
-
-![Admin Dashboard](file:///Users/erdoganyesil/Documents/adisyon-menu/resimler/admin dashboard.png)
-![Ürün Yönetimi](file:///Users/erdoganyesil/Documents/adisyon-menu/resimler/admin ürünler.png)
-![Kategori Ayarları](file:///Users/erdoganyesil/Documents/adisyon-menu/resimler/admin kategoriler.png)
-
----
-
-### ⚙️ İleri Seviye Ayarlar & Güvenlik
-
-- **Webhook Entegrasyonu:** Sipariş verilerini dış muhasebe veya POS sistemlerine anlık gönderin.
-- **Danger Zone:** Tüm verileri admin şifresiyle tek tuşla sıfırlama (Fabrika Ayarları).
-- **Tema Özelleştirme:** İşletme logonuzu ve kurumsal renklerinizi panele yansıtın.
-
-![Admin Ayarlar](file:///Users/erdoganyesil/Documents/adisyon-menu/resimler/admin ayarlar.png)
+````carousel
+```markdown
+### 📱 Garson Paneli
+Masaların anlık doluluk durumunu takip edin.
+- Boş/Dolu görsel ayrımı
+- Hazır siparişlerde "Zıplayan İkon" uyarısı
+- Tek tıkla ürün ekleme
+```
+![Garson Arayüzü](file:///Users/erdoganyesil/Documents/adisyon-menu/resimler/garson masa.png)
+<!-- slide -->
+```markdown
+### 👨‍🍳 Mutfak Ekranı
+Hangi sipariş ne kadar süredir bekliyor?
+- Kronolojik sipariş sırası
+- Tek dokunuşla durum güncelleme
+- Gecikme riskini minimize eden yapı
+```
+![Mutfak Paneli](file:///Users/erdoganyesil/Documents/adisyon-menu/resimler/mutfak siparişler.png)
+````
 
 ---
 
-## 🎨 Tasarım Anlayışı
+## 💰 Kasa Kontrolü: Güvenli ve Hızlı Tahsilat
 
-Uygulamamız, kullanıcıyı yormayan **Glassmorphism** efektleri, yumuşak geçişler ve modern bir renk paleti ile donatılmıştır. Her buton ve ikon, yoğun tempo içindeki restoran çalışanlarının hata yapmasını önleyecek şekilde büyük ve belirgin tasarlanmıştır.
+Açık hesaplar, iptaller veya ödemeler... Kasa ekranı ile finansal her hareket kayıt altında.
 
-## 📦 Kolay Kurulum
+- **Hataya Yer Yok:** Masa bazlı detaylı döküm.
+- **Hızlı Tahsilat:** Tek dokunuşla hesap kapatma.
+- **Anlık Ciro:** Günün her anında kasanızın durumunu izleyin.
 
-Sistemimiz Docker uyumludur. Tek bir komutla kendi sunucunuzda PostgreSQL veritabanı ile birlikte saniyeler içinde ayağa kaldırabilir, teknik karmaşa yaşamadan hemen kullanmaya başlayabilirsiniz.
+![Kasa Yönetimi](file:///Users/erdoganyesil/Documents/adisyon-menu/resimler/kasa hesaplar.png)
+
+---
+
+## 📊 Yönetici Paneli: Veriye Dayalı Karar Alma
+
+İşletmenizi tahminlerle değil, gerçek rakamlarla yönetin. Gelişmiş dashboard ekranımız işletmenizin röntgenini çeker.
+
+```carousel
+### 📈 Analitik Dashboard
+Saatlik sipariş yoğunluğu grafiği ile en yoğun saatlerinizi analiz edin. Günün en çok satan "Top 3" ürününü görerek stoklarınızı yönetin.
+![Dashboard](file:///Users/erdoganyesil/Documents/adisyon-menu/resimler/admin dashboard.png)
+<!-- slide -->
+### 🍔 Ürün ve Stok Yönetimi
+Saniyeler içinde fiyat güncelleyin veya yeni bir kategori ekleyin. Sınırsız ürün desteği ile menünüzü dilediğiniz gibi genişletin.
+![Ürünler](file:///Users/erdoganyesil/Documents/adisyon-menu/resimler/admin ürünler.png)
+<!-- slide -->
+### 🏷️ Kategori ve Varyasyonlar
+Ürünlerinizi Lucide ikon setiyle görselleştirin, kategorilere ayırarak karmaşayı önleyin.
+![Kategoriler](file:///Users/erdoganyesil/Documents/adisyon-menu/resimler/admin kategoriler.png)
+<!-- slide -->
+### 👥 Personel ve Yetki
+Garson, Kasiyer ve Mutfak personeli için ayrı hesaplar tanımlayın. Kimin hangi siparişi aldığını takip edin.
+![Personel](file:///Users/erdoganyesil/Documents/adisyon-menu/resimler/admin personeller.png)
+<!-- slide -->
+### 📜 Sipariş Arşivi
+Tüm geçmiş siparişleri detaylıca inceleyin, iptalleri ve servis sürelerini denetleyin.
+![Siparişler](file:///Users/erdoganyesil/Documents/adisyon-menu/resimler/admin siparişler.png)
+```
+
+---
+
+## ⚙️ Güçlü Altyapı ve Entegrasyonlar
+
+Sadece bir adisyon sistemi değil, büyümeye hazır bir teknoloji yatırımı:
+
+- 🔗 **Webhook Desteği:** Sipariş verilerini dış muhasebe veya POS sistemlerine anlık aktarın.
+- 🚨 **Danger Zone:** İstediğiniz an tüm verileri şifreli onay sistemiyle sıfırlayın.
+- 🎨 **Kurumsal Kimlik:** İşletme logonuzu ve renklerinizi panele yansıtın.
+- 📱 **Tam Responsive:** Telefon, tablet veya PC; tüm cihazlarda kusursuz kullanım.
+
+![Ayarlar ve Entegrasyon](file:///Users/erdoganyesil/Documents/adisyon-menu/resimler/admin ayarlar.png)
+![Masa Yönetimi](file:///Users/erdoganyesil/Documents/adisyon-menu/resimler/admin masalar.png)
+
+---
+
+## 🚀 Teknolojik Üstünlük
+
+> [!IMPORTANT]
+> **Docker Desteği:** Karmaşık kurulumlara veda edin. Birkaç saniye içinde PostgreSQL veritabanı ile birlikte ayağa kalkar, kurulum maliyeti ve teknik zorlukları ortadan kaldırır.
+
+Modern teknolojiler (**Next.js 15, PostgreSQL, Prisma**) ile inşa edilen **Adisyon Menü**, işletmenizin dijital dünyadaki en güçlü müttefiki olacak.
