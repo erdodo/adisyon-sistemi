@@ -1,0 +1,121 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Settings {
+  id             Int      @id @default(autoincrement())
+  businessName   String
+  phone          String
+  address        String
+  description    String?
+  template       String
+  primaryColor   String   @default("#e67e22")
+  secondaryColor String   @default("#2c3e50")
+  logoUrl        String?
+  isSetupDone    Boolean  @default(false)
+  adminPassword  String
+  currency       String   @default("₺")
+  webhookUrl     String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Category {
+  id        Int       @id @default(autoincrement())
+  name      String
+  icon      String?
+  sortOrder Int       @default(0)
+  isActive  Boolean   @default(true)
+  products  Product[]
+  createdAt DateTime  @default(now())
+}
+
+model Product {
+  id              Int         @id @default(autoincrement())
+  name            String
+  description     String?
+  price           Float
+  imageUrl        String?
+  categoryId      Int
+  category        Category    @relation(fields: [categoryId], references: [id])
+  isActive        Boolean     @default(true)
+  sortOrder       Int         @default(0)
+  preparationTime Int?
+  orderItems      OrderItem[]
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+}
+
+model TableGroup {
+  id        Int      @id @default(autoincrement())
+  name      String
+  sortOrder Int      @default(0)
+  isActive  Boolean  @default(true)
+  tables    Table[]
+  createdAt DateTime @default(now())
+}
+
+model Table {
+  id        Int         @id @default(autoincrement())
+  name      String
+  groupId   Int?
+  group     TableGroup? @relation(fields: [groupId], references: [id])
+  capacity  Int         @default(4)
+  isActive  Boolean     @default(true)
+  orders    Order[]
+  createdAt DateTime    @default(now())
+}
+
+model Staff {
+  id        Int      @id @default(autoincrement())
+  name      String
+  phone     String   @unique
+  password  String
+  role      String   @default("waiter") // admin, waiter, kitchen, cashier
+  isActive  Boolean  @default(true)
+  orders    Order[]  @relation("StaffOrders")
+  createdAt DateTime @default(now())
+}
+
+model Order {
+  id           Int         @id @default(autoincrement())
+  tableId      Int
+  table        Table       @relation(fields: [tableId], references: [id])
+  staffId      Int?
+  staff        Staff?      @relation("StaffOrders", fields: [staffId], references: [id])
+  status       String      @default("pending") // pending, preparing, ready, served, paid, cancelled
+  totalAmount  Float       @default(0)
+  note         String?
+  customerName String?
+  items        OrderItem[]
+  payments     Payment[]
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+}
+
+model OrderItem {
+  id        Int      @id @default(autoincrement())
+  orderId   Int
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId Int
+  product   Product  @relation(fields: [productId], references: [id])
+  quantity  Int      @default(1)
+  price     Float
+  note      String?
+  status    String   @default("pending")
+  createdAt DateTime @default(now())
+}
+
+model Payment {
+  id        Int      @id @default(autoincrement())
+  orderId   Int
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  amount    Float
+  method    String
+  createdAt DateTime @default(now())
+}
